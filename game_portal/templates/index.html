@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - RetroArc{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <h1>Welcome to RetroArc</h1>
+    <p class="subtitle">Play Classic Games Online</p>
+    
+    <div class="games-preview">
+        <div class="game-card">
+            <div class="game-icon">🏓</div>
+            <h3>Pong</h3>
+            <p>Classic paddle game for two players</p>
+        </div>
+        <div class="game-card">
+            <div class="game-icon">🐍</div>
+            <h3>Snake</h3>
+            <p>Eat food and grow your snake</p>
+        </div>
+        <div class="game-card">
+            <div class="game-icon">🗺️</div>
+            <h3>US States</h3>
+            <p>Name all 50 US states on the map</p>
+        </div>
+    </div>
+
+    <div class="cta-buttons">
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Create Account</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">Login</a>
+    </div>
+</div>
+{% endblock %}

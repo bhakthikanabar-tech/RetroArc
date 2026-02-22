@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - RetroArc{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome, {{ username }}!</h1>
+    <p class="subtitle">Choose a game to play</p>
+    
+    <div class="games-grid">
+        <div class="game-box">
+            <div class="game-header">
+                <h2>🏓 Pong</h2>
+            </div>
+            <div class="game-stats">
+                {% if stats.get('pong') %}
+                <div class="stat">
+                    <span class="stat-label">High Score:</span>
+                    <span class="stat-value">{{ stats['pong']['high_score'] }}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Games Played:</span>
+                    <span class="stat-value">{{ stats['pong']['games_played'] }}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Wins:</span>
+                    <span class="stat-value">{{ stats['pong']['total_wins'] }}</span>
+                </div>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('play_game', game_name='pong') }}" class="btn btn-primary">Play Pong</a>
+        </div>
+        
+        <div class="game-box">
+            <div class="game-header">
+                <h2>🐍 Snake</h2>
+            </div>
+            <div class="game-stats">
+                {% if stats.get('snake') %}
+                <div class="stat">
+                    <span class="stat-label">High Score:</span>
+                    <span class="stat-value">{{ stats['snake']['high_score'] }}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Games Played:</span>
+                    <span class="stat-value">{{ stats['snake']['games_played'] }}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Wins:</span>
+                    <span class="stat-value">{{ stats['snake']['total_wins'] }}</span>
+                </div>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('play_game', game_name='snake') }}" class="btn btn-primary">Play Snake</a>
+        </div>
+        
+        <div class="game-box">
+            <div class="game-header">
+                <h2>🗺️ US States</h2>
+            </div>
+            <div class="game-stats">
+                {% if stats.get('states') %}
+                <div class="stat">
+                    <span class="stat-label">High Score:</span>
+                    <span class="stat-value">{{ stats['states']['high_score'] }}/50</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Games Played:</span>
+                    <span class="stat-value">{{ stats['states']['games_played'] }}</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Perfect Games:</span>
+                    <span class="stat-value">{{ stats['states']['total_wins'] }}</span>
+                </div>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('play_game', game_name='states') }}" class="btn btn-primary">Play US States</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

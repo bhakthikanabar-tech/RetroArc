@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Play Pong - RetroArc{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <h1>🏓 Pong</h1>
+    
+    <div class="game-info">
+        <div class="game-info-item">
+            <span class="game-info-label">Left Score</span>
+            <span class="game-info-value" id="leftScore">0</span>
+        </div>
+        <div class="game-info-item">
+            <span class="game-info-label">Right Score</span>
+            <span class="game-info-value" id="rightScore">0</span>
+        </div>
+        <div class="game-info-item">
+            <span class="game-info-label">High Score</span>
+            <span class="game-info-value" id="highScore">0</span>
+        </div>
+    </div>
+    
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div class="game-controls">
+        <p><strong>Controls:</strong></p>
+        <p>Left Paddle: W (Up) / S (Down)</p>
+        <p>Right Paddle: ↑ (Up) / ↓ (Down)</p>
+        <p>Press SPACE to start</p>
+        <div style="margin-top: 1rem;">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/pong.js') }}"></script>
+{% endblock %}

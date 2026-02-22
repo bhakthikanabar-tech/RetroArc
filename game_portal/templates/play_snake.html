@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Play Snake - RetroArc{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <h1>🐍 Snake</h1>
+    
+    <div class="game-info">
+        <div class="game-info-item">
+            <span class="game-info-label">Score</span>
+            <span class="game-info-value" id="score">0</span>
+        </div>
+        <div class="game-info-item">
+            <span class="game-info-label">High Score</span>
+            <span class="game-info-value" id="highScore">0</span>
+        </div>
+    </div>
+    
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
+    
+    <div class="game-controls">
+        <p><strong>Controls:</strong></p>
+        <p>Arrow Keys: ↑ ↓ ← →</p>
+        <p>Press SPACE to start/restart</p>
+        <div style="margin-top: 1rem;">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/snake.js') }}"></script>
+{% endblock %}

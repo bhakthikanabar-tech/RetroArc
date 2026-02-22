@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Play US States - RetroArc{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <h1>🗺️ US States Game</h1>
+    
+    <div class="game-info">
+        <div class="game-info-item">
+            <span class="game-info-label">Correct</span>
+            <span class="game-info-value" id="score">0/50</span>
+        </div>
+        <div class="game-info-item">
+            <span class="game-info-label">High Score</span>
+            <span class="game-info-value" id="highScore">0/50</span>
+        </div>
+        <div class="game-info-item">
+            <span class="game-info-label">Time</span>
+            <span class="game-info-value" id="timer">0:00</span>
+        </div>
+    </div>
+    
+    <div style="position: relative; display: inline-block;">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+    
+    <div id="inputContainer" style="margin-top: 20px; display: none;">
+        <input type="text" id="stateInput" placeholder="Type a state name and press Enter..." 
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="words"
+               spellcheck="false"
+               style="padding: 12px 24px; font-size: 18px; border: 3px solid #667eea; border-radius: 25px; width: 400px; text-align: center; outline: none;">
+        <div style="margin-top: 10px; color: white; font-size: 14px;">
+            <span id="statusMessage">Start typing a state name...</span>
+        </div>
+    </div>
+    
+    <div class="game-controls">
+        <p><strong>How to Play:</strong></p>
+        <p>Type state names and press Enter to mark them on the map</p>
+        <p>Try to name all 50 states! The input will flash:</p>
+        <p style="color: #4CAF50;">🟢 Green = Correct | <span style="color: #FFC107;">🟡 Yellow = Already guessed</span> | <span style="color: #f44336;">🔴 Red = Wrong</span></p>
+        <button id="startBtn" class="btn btn-primary" style="margin: 1rem;">Start Game</button>
+        <button id="giveUpBtn" class="btn btn-secondary" style="margin: 1rem; display: none;">Give Up & Show All</button>
+        <div style="margin-top: 1rem;">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/states.js') }}"></script>
+{% endblock %}
