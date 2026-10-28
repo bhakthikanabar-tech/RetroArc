@@ -1,3 +1,4 @@
+```html
 {% extends "base.html" %}
 
 {% block title %}Play Pong - RetroArc{% endblock %}
@@ -5,31 +6,73 @@
 {% block content %}
 <div class="game-container">
     <h1>🏓 Pong</h1>
-    
+
+    <div class="game-mode-selection">
+        <h3>Choose Game Mode</h3>
+
+        <div class="mode-buttons">
+            <button type="button" id="singlePlayerBtn"
+                    class="btn btn-primary mode-btn active">
+                👤 1 Player
+            </button>
+
+            <button type="button" id="twoPlayerBtn"
+                    class="btn btn-secondary mode-btn">
+                👥 2 Players
+            </button>
+        </div>
+
+        <p id="modeDescription">Play against the computer!</p>
+    </div>
+
     <div class="game-info">
         <div class="game-info-item">
-            <span class="game-info-label">Left Score</span>
+            <span class="game-info-label" id="leftPlayerLabel">Player 1</span>
             <span class="game-info-value" id="leftScore">0</span>
         </div>
+
         <div class="game-info-item">
-            <span class="game-info-label">Right Score</span>
+            <span class="game-info-label" id="rightPlayerLabel">Computer</span>
             <span class="game-info-value" id="rightScore">0</span>
         </div>
+
         <div class="game-info-item">
             <span class="game-info-label">High Score</span>
             <span class="game-info-value" id="highScore">0</span>
         </div>
     </div>
-    
+
     <canvas id="gameCanvas" width="800" height="600"></canvas>
-    
+
+    <p id="gameStatus" role="status" aria-live="polite">
+        Choose a mode and start playing!
+    </p>
+
+    <div class="game-actions">
+        <button type="button" id="startBtn" class="btn btn-primary">
+            ▶ Start Game
+        </button>
+
+        <button type="button" id="restartBtn" class="btn btn-secondary">
+            ↻ Restart
+        </button>
+    </div>
+
     <div class="game-controls">
-        <p><strong>Controls:</strong></p>
-        <p>Left Paddle: W (Up) / S (Down)</p>
-        <p>Right Paddle: ↑ (Up) / ↓ (Down)</p>
-        <p>Press SPACE to start</p>
+        <h3>🎮 How to Play</h3>
+
+        <p><strong>Player 1:</strong> W / S to move up and down</p>
+
+        <p id="rightPlayerControls">
+            <strong>Computer:</strong> Plays automatically
+        </p>
+
+        <p><strong>Spacebar:</strong> Start or pause the game</p>
+
         <div style="margin-top: 1rem;">
-            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+                Back to Dashboard
+            </a>
         </div>
     </div>
 </div>
@@ -38,3 +81,4 @@
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/pong.js') }}"></script>
 {% endblock %}
+```
