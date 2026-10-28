@@ -1,4 +1,3 @@
-```javascript
 // ========================================
 // RETROARC - SNAKE GAME
 // ========================================
@@ -546,4 +545,3 @@ placeFood();
 draw();
 
 requestAnimationFrame(gameLoop);
-```
