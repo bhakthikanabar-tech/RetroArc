@@ -421,48 +421,118 @@ button {
 /* ==========================================
    DASHBOARD AND GAME PAGES
 ========================================== */
+```css
+/* ==========================================
+   DASHBOARD - RETRO ARCADE CARDS
+========================================== */
 
-.dashboard,
-.game-info,
-.game-controls {
-    padding: 22px;
-    background: var(--retro-panel);
-    color: var(--retro-text);
-    border: 1px solid rgba(53, 242, 228, 0.2);
-    border-radius: 10px;
-}
-
-.game-container {
+.dashboard {
     width: 100%;
-    color: var(--retro-text);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0 60px;
     background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-#gameCanvas {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    margin: 20px auto;
+.dashboard h1 {
+    margin: 0 0 18px;
+    color: var(--retro-cyan);
+    font-family: "Courier New", monospace;
+    font-size: clamp(28px, 4vw, 42px);
+    overflow-wrap: anywhere;
+    text-shadow: 2px 2px 0 var(--retro-pink);
+}
 
-    background: #05070b;
+.dashboard > p {
+    margin-bottom: 30px;
+    color: var(--retro-muted);
+    font-size: 18px;
+}
+
+/* Dashboard game cards */
+
+.dashboard .games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.dashboard .game-card {
+    min-width: 0;
+    padding: 26px 22px;
+    background: var(--retro-panel) !important;
+    border: 1px solid rgba(53, 242, 228, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.dashboard .game-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--retro-pink);
+}
+
+.dashboard .game-card h2,
+.dashboard .game-card h3 {
+    color: var(--retro-pink);
+    font-family: "Courier New", monospace;
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.dashboard .game-card p {
+    color: var(--retro-muted);
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* Dashboard play buttons */
+
+.dashboard .game-card .btn {
+    display: inline-block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--retro-cyan);
+    color: var(--retro-bg) !important;
     border: 2px solid var(--retro-cyan);
-    border-radius: 5px;
-
-    box-shadow: 0 0 22px rgba(53, 242, 228, 0.12);
-}
-
-#score,
-#highScore,
-#timer {
-    color: var(--retro-yellow);
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
     font-weight: bold;
 }
 
-#statusMessage {
-    color: var(--retro-cyan);
+.dashboard .game-card .btn:hover {
+    background: var(--retro-pink);
+    border-color: var(--retro-pink);
 }
 
+/* Responsive dashboard */
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 30px 0 45px;
+    }
+
+    .dashboard .games-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .dashboard .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard .game-card {
+        padding: 24px 18px;
+    }
+}
+```
 /* ==========================================
    LINKS
 ========================================== */
