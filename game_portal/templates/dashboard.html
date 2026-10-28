@@ -5,7 +5,7 @@
 {% block content %}
 <div class="dashboard">
     <h1>Welcome, {{ username }}!</h1>
-    <p class="subtitle">Choose a game to play</p>
+    <p class="subtitle">Where do you want to start?</p>
     
     <div class="games-grid">
         <div class="game-box">
@@ -56,7 +56,7 @@
         
         <div class="game-box">
             <div class="game-header">
-                <h2>🗺️ US States</h2>
+                <h2>🗺️ American Atlas</h2>
             </div>
             <div class="game-stats">
                 {% if stats.get('states') %}
@@ -74,7 +74,7 @@
                 </div>
                 {% endif %}
             </div>
-            <a href="{{ url_for('play_game', game_name='states') }}" class="btn btn-primary">Play US States</a>
+            <a href="{{ url_for('play_game', game_name='states') }}" class="btn btn-primary">Play American Atlas</a>
         </div>
     </div>
 </div>
