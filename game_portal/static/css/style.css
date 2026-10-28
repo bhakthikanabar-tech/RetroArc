@@ -1,823 +1,369 @@
 ```css
-/* ========================================
-   RETROARC — CLASSIC ARCADE THEME
-   ======================================== */
+/* =========================================
+   RETROARC - CLASSIC ARCADE THEME
+   Paste at the END of style.css
+========================================= */
 
 :root {
-    --bg: #0b0e17;
-    --bg-light: #121827;
-    --panel: #171e2d;
-    --panel-light: #202a3b;
-
-    --cyan: #35f2e4;
-    --pink: #ff4fa3;
-    --yellow: #ffd166;
-
-    --text: #f2f4f8;
-    --muted: #a0a9bc;
-    --border: #303b50;
-
-    --radius: 8px;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --arcade-bg: #090b16;
+    --arcade-panel: #141827;
+    --arcade-panel-hover: #1c2235;
+    --arcade-pink: #ff70c5;
+    --arcade-cyan: #35f2e4;
+    --arcade-yellow: #ffd166;
+    --arcade-white: #f5f5ff;
+    --arcade-muted: #b8bfd6;
 }
 
-/* Reset */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Main page */
 html {
-    scroll-behavior: smooth;
+    min-height: 100%;
+    background: var(--arcade-bg);
 }
 
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg);
-    background-image:
-        radial-gradient(
-            ellipse at top,
-            rgba(53, 242, 228, 0.06),
-            transparent 55%
-        );
-    color: var(--text);
+    margin: 0;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.6;
+    background:
+        radial-gradient(
+            ellipse at 50% 15%,
+            rgba(53, 242, 228, 0.09),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 15% 75%,
+            rgba(255, 112, 197, 0.08),
+            transparent 35%
+        ),
+        var(--arcade-bg) !important;
+
+    color: var(--arcade-white) !important;
+    font-family: Arial, sans-serif;
 }
 
-::selection {
-    background: var(--cyan);
-    color: var(--bg);
+/* Retro headings */
+h1,
+h2,
+h3,
+.logo,
+.game-card h3 {
+    font-family: "Courier New", monospace;
 }
 
-a {
-    color: var(--cyan);
+h1,
+h2,
+h3,
+p,
+label {
+    color: var(--arcade-white);
 }
 
-button,
-input {
-    font: inherit;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-    outline: 2px solid var(--yellow);
-    outline-offset: 4px;
-}
-
-
-/* ========================================
-   NAVIGATION
-   ======================================== */
-
+/* Navigation bar */
 .navbar {
-    background: #101522;
-    border-bottom: 2px solid var(--border);
-    padding: 1rem 0;
-    position: relative;
-    z-index: 10;
+    background: #0d1020 !important;
+    border-bottom: 2px solid var(--arcade-pink);
+    box-shadow: 0 4px 22px rgba(255, 112, 197, 0.12);
 }
 
 .nav-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
+    min-height: 76px;
 }
 
 .logo {
-    color: var(--cyan);
-    font-family: "Courier New", monospace;
-    font-size: 1.7rem;
-    font-weight: 900;
-    letter-spacing: 1px;
+    color: var(--arcade-cyan) !important;
+    font-size: 30px;
+    font-weight: bold;
     text-decoration: none;
-    transition: color 0.2s;
-}
-
-.logo:hover {
-    color: var(--yellow);
+    text-shadow: 2px 2px 0 var(--arcade-pink);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .nav-links a {
-    color: var(--muted);
+    color: var(--arcade-white) !important;
     text-decoration: none;
-    padding: 0.55rem 0.9rem;
-    border-radius: 5px;
-    font-size: 0.95rem;
-    transition: 0.2s ease;
+    font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: var(--cyan);
-    background: rgba(53, 242, 228, 0.08);
+    color: var(--arcade-pink) !important;
 }
 
-
-/* ========================================
-   MAIN LAYOUT
-   ======================================== */
-
+/* Main content */
 .container {
-    flex: 1;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
+    color: var(--arcade-white);
 }
-
-
-/* ========================================
-   HOME / WELCOME SECTION
-   ======================================== */
 
 .welcome-section {
+    padding: 75px 20px 45px;
     text-align: center;
-    padding: 4rem 0 3rem;
 }
 
 .welcome-section h1 {
-    font-family: "Courier New", monospace;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 900;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    color: var(--arcade-white);
+    font-size: clamp(34px, 5vw, 66px);
     line-height: 1.2;
-    letter-spacing: -2px;
-    color: var(--cyan);
-    margin-bottom: 1.2rem;
-    text-shadow: 3px 3px 0 rgba(255, 79, 163, 0.45);
+    overflow-wrap: anywhere;
+    text-shadow: 4px 4px 0 rgba(255, 112, 197, 0.75);
 }
 
-.subtitle {
-    color: var(--muted);
-    font-size: 1.15rem;
-    max-width: 650px;
-    margin: 0 auto 2.5rem;
+.welcome-section p {
+    color: var(--arcade-muted);
+    font-size: 18px;
+    line-height: 1.7;
 }
 
+/* Games section */
 .games-preview {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin: 2.5rem 0 3rem;
+    padding: 35px 20px 70px;
+}
+
+.games-preview h2 {
+    margin-bottom: 35px;
+    color: var(--arcade-cyan);
+    text-align: center;
+    font-size: clamp(25px, 3vw, 36px);
+}
+
+/* Game cards */
+.games-grid,
+.games-preview .games-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 250px), 1fr)
+    );
+    gap: 26px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .game-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem 1.5rem;
-    width: 260px;
-
+    position: relative;
+    padding: 30px 24px;
+    overflow: hidden;
     text-align: center;
 
+    background: var(--arcade-panel) !important;
+    border: 1px solid rgba(53, 242, 228, 0.35);
+    border-radius: 12px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background-color 0.2s ease;
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .game-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--cyan);
-    background: var(--panel-light);
-}
-
-.game-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    transform: translateY(-7px);
+    background: var(--arcade-panel-hover) !important;
+    border-color: var(--arcade-pink);
+    box-shadow:
+        0 0 12px rgba(255, 112, 197, 0.15),
+        0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .game-card h3 {
-    color: var(--yellow);
-    font-family: "Courier New", monospace;
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
+    margin: 18px 0 12px;
+    color: var(--arcade-pink) !important;
+    font-size: 23px;
 }
 
 .game-card p {
-    color: var(--muted);
-    font-size: 0.95rem;
+    color: var(--arcade-muted) !important;
+    line-height: 1.7;
 }
 
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+/* Game icons */
+.game-icon {
+    display: block;
+    margin: 0 auto 16px;
+    font-size: 55px;
+    line-height: 1.3;
 }
 
-
-/* ========================================
-   BUTTONS
-   ======================================== */
+/* Buttons */
+.btn,
+button,
+input[type="submit"] {
+    font-family: inherit;
+}
 
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
+    display: inline-block;
+    padding: 12px 22px;
+    border: 2px solid var(--arcade-cyan);
+    border-radius: 6px;
 
-    padding: 0.75rem 1.5rem;
+    background: var(--arcade-cyan);
+    color: #080b15 !important;
 
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-align: center;
+    font-weight: bold;
     text-decoration: none;
-
     cursor: pointer;
 
     transition:
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .btn:hover {
     transform: translateY(-2px);
+    background: var(--arcade-pink);
+    border-color: var(--arcade-pink);
+    box-shadow: 0 0 16px rgba(255, 112, 197, 0.25);
 }
 
-.btn:active {
-    transform: translateY(0);
+/* Forms and inputs */
+input,
+textarea,
+select {
+    max-width: 100%;
+    box-sizing: border-box;
+    background: #0d1120 !important;
+    color: var(--arcade-white) !important;
+    border: 1px solid #555e7b !important;
+    border-radius: 6px;
 }
 
-.btn-primary {
-    background: var(--cyan);
-    color: #091219;
-    border-color: var(--cyan);
+input::placeholder,
+textarea::placeholder {
+    color: #a8b0c8 !important;
+    opacity: 1;
 }
 
-.btn-primary:hover {
-    background: #a0fff7;
-    border-color: #a0fff7;
-    color: #091219;
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--arcade-cyan) !important;
+    box-shadow: 0 0 0 3px rgba(53, 242, 228, 0.12);
 }
 
-.btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border-color: #56647c;
-}
-
-.btn-secondary:hover {
-    background: var(--panel-light);
-    border-color: var(--cyan);
-    color: var(--cyan);
-}
-
-
-/* ========================================
-   LOGIN / REGISTER
-   ======================================== */
-
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 65vh;
-    padding: 2rem 0;
-}
-
+/* Authentication cards */
 .auth-box {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--pink);
-    border-radius: var(--radius);
-
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 420px;
-
-    box-shadow: var(--shadow);
+    background: var(--arcade-panel) !important;
+    color: var(--arcade-white) !important;
+    border: 1px solid rgba(255, 112, 197, 0.45);
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
 .auth-box h2 {
-    color: var(--cyan);
-    font-family: "Courier New", monospace;
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 1.8rem;
+    color: var(--arcade-pink);
 }
 
-.form-group {
-    margin-bottom: 1.4rem;
+.auth-box a {
+    color: var(--arcade-cyan);
 }
 
-.form-group label {
-    display: block;
-    color: var(--text);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+/* Dashboard and game panels */
+.dashboard,
+.game-container,
+.game-info,
+.game-controls {
+    color: var(--arcade-white);
 }
 
-.form-group input {
-    width: 100%;
-    padding: 0.8rem 0.9rem;
-
-    color: var(--text);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-
-    font-size: 1rem;
-    transition: border-color 0.2s ease;
+.dashboard,
+.game-info,
+.game-controls {
+    background: var(--arcade-panel);
+    border: 1px solid rgba(53, 242, 228, 0.2);
+    border-radius: 10px;
 }
-
-.form-group input::placeholder {
-    color: #748097;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--cyan);
-}
-
-.auth-box .btn {
-    width: 100%;
-    margin-top: 0.5rem;
-}
-
-.auth-link {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-}
-
-.auth-link a {
-    color: var(--cyan);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.auth-link a:hover {
-    color: var(--yellow);
-    text-decoration: underline;
-}
-
-.error-message {
-    background: rgba(255, 79, 163, 0.1);
-    color: #ff91c4;
-    border: 1px solid rgba(255, 79, 163, 0.4);
-    border-radius: 5px;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-
-/* ========================================
-   DASHBOARD
-   ======================================== */
-
-.dashboard {
-    padding: 2rem 0;
-}
-
-.dashboard h1 {
-    color: var(--cyan);
-    font-family: "Courier New", monospace;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 280px), 1fr)
-    );
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-}
-
-.game-box {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.8rem;
-
-    box-shadow: var(--shadow);
-
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.game-box:hover {
-    transform: translateY(-4px);
-    border-color: var(--pink);
-}
-
-.game-header h2 {
-    color: var(--yellow);
-    font-family: "Courier New", monospace;
-    font-size: 1.6rem;
-    margin-bottom: 1.2rem;
-    text-align: center;
-}
-
-.game-stats {
-    margin: 1.5rem 0;
-}
-
-.stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-
-    padding: 0.8rem 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-.stat-value {
-    color: var(--cyan);
-    font-weight: 700;
-    font-size: 1.05rem;
-}
-
-.game-box .btn {
-    width: 100%;
-    margin-top: 1.3rem;
-}
-
-
-/* ========================================
-   GAME PAGE
-   ======================================== */
 
 .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 0;
+    background: transparent;
 }
-
-.game-container > h1 {
-    color: var(--cyan);
-    font-family: "Courier New", monospace;
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    text-align: center;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 0 rgba(255, 79, 163, 0.35);
-}
-
-.game-mode-selection {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.game-mode-selection h3,
-.game-controls h3 {
-    color: var(--yellow);
-    font-family: "Courier New", monospace;
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-}
-
-.mode-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 1rem 0;
-}
-
-.mode-btn {
-    min-width: 140px;
-}
-
-.mode-btn.active {
-    background: var(--pink);
-    color: #170b14;
-    border-color: var(--pink);
-}
-
-.mode-btn.active:hover {
-    background: #ff83bd;
-    border-color: #ff83bd;
-}
-
-#modeDescription {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin-top: 0.8rem;
-}
-
-
-/* Scoreboard */
-
-.game-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-
-    width: fit-content;
-    max-width: 100%;
-
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    padding: 1rem 2rem;
-    margin: 0 auto 1.5rem;
-}
-
-.game-info-item {
-    min-width: 80px;
-    text-align: center;
-}
-
-.game-info-label {
-    display: block;
-    color: var(--muted);
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-}
-
-.game-info-value {
-    display: block;
-    color: var(--cyan);
-    font-family: "Courier New", monospace;
-    font-size: 1.7rem;
-    font-weight: 900;
-    line-height: 1.3;
-}
-
 
 /* Game canvas */
-
 #gameCanvas {
     display: block;
-
-    width: 100%;
-    max-width: 800px;
+    max-width: 100%;
     height: auto;
+    margin: 20px auto;
 
     background: #05070b;
-    border: 2px solid var(--cyan);
-    border-radius: 4px;
-
-    box-shadow:
-        0 0 0 5px #171e2d,
-        0 0 22px rgba(53, 242, 228, 0.12);
+    border: 2px solid var(--arcade-cyan);
+    border-radius: 5px;
+    box-shadow: 0 0 22px rgba(53, 242, 228, 0.12);
 }
 
-
-/* Game status */
-
-#gameStatus {
-    color: var(--yellow);
-    font-family: "Courier New", monospace;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-align: center;
-
-    min-height: 28px;
-    margin: 1.5rem 0 0.5rem;
+/* Score and status */
+#score,
+#highScore,
+#timer {
+    color: var(--arcade-yellow);
+    font-weight: bold;
 }
 
-
-/* Game buttons */
-
-.game-actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 0.8rem 0 1.5rem;
+#statusMessage {
+    color: var(--arcade-cyan);
 }
 
-.game-actions .btn {
-    min-width: 145px;
-}
-
-
-/* Game instructions */
-
-.game-controls {
-    width: 100%;
-    max-width: 800px;
-
-    margin-top: 1rem;
-    padding: 1.5rem;
-
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    text-align: center;
-}
-
-.game-controls h3 {
-    margin-bottom: 0.8rem;
-}
-
-.game-controls p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin: 0.5rem 0;
-}
-
-.game-controls strong {
-    color: var(--text);
-}
-
-
-/* ========================================
-   FOOTER
-   ======================================== */
-
+/* Footer */
 footer {
-    background: #101522;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-
+    padding: 24px 16px;
+    background: #0d1020 !important;
+    color: var(--arcade-muted) !important;
+    border-top: 1px solid rgba(53, 242, 228, 0.2);
     text-align: center;
-    padding: 1.3rem 1rem;
-    margin-top: auto;
-
-    font-size: 0.9rem;
 }
 
+footer p {
+    color: var(--arcade-muted) !important;
+}
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
+/* Make links readable */
+a {
+    color: var(--arcade-cyan);
+}
 
+a:hover {
+    color: var(--arcade-pink);
+}
+
+/* Mobile layout */
 @media (max-width: 768px) {
     .nav-container {
-        flex-direction: column;
-        gap: 0.8rem;
-        padding: 0 1rem;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 14px 18px;
+    }
+
+    .logo {
+        font-size: 25px;
     }
 
     .nav-links {
-        justify-content: center;
-        gap: 0.3rem;
-    }
-
-    .nav-links a {
-        padding: 0.5rem 0.65rem;
-        font-size: 0.9rem;
-    }
-
-    .container {
-        padding: 1.5rem 1rem;
+        flex-wrap: wrap;
+        gap: 14px;
     }
 
     .welcome-section {
-        padding: 2.5rem 0;
+        padding: 48px 18px 30px;
     }
 
     .welcome-section h1 {
-        letter-spacing: -1px;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
+        font-size: clamp(32px, 8vw, 48px);
     }
 
     .games-preview {
-        gap: 1rem;
+        padding: 25px 16px 45px;
     }
 
     .game-card {
-        width: 100%;
-        max-width: 360px;
-    }
-
-    .game-container {
-        padding: 1.5rem 0;
-    }
-
-    .game-info {
-        width: 100%;
-        gap: 1.2rem;
-        padding: 1rem;
-    }
-
-    .game-info-item {
-        min-width: 65px;
-    }
-
-    .game-info-value {
-        font-size: 1.4rem;
-    }
-
-    #gameCanvas {
-        box-shadow: 0 0 0 3px #171e2d;
-    }
-
-    .auth-box {
-        padding: 1.8rem;
-    }
-}
-
-@media (max-width: 420px) {
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    .nav-links {
-        gap: 0.1rem;
-    }
-
-    .nav-links a {
-        padding: 0.4rem 0.5rem;
-        font-size: 0.82rem;
-    }
-
-    .game-info {
-        gap: 0.8rem;
-        padding: 0.8rem 0.5rem;
-    }
-
-    .game-info-item {
-        min-width: 60px;
-    }
-
-    .game-info-label {
-        font-size: 0.75rem;
-    }
-
-    .game-info-value {
-        font-size: 1.25rem;
-    }
-
-    .mode-btn {
-        min-width: 120px;
-        padding: 0.7rem 1rem;
-    }
-
-    .game-actions {
-        width: 100%;
-    }
-
-    .game-actions .btn {
-        min-width: 0;
-        flex: 1;
-    }
-
-    .auth-box {
-        padding: 1.4rem;
-    }
-}
-
-/* Respect reduced-motion preferences */
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+        padding: 24px 18px;
     }
 }
 ```
