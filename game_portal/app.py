@@ -96,27 +96,47 @@ def logout():
 
 @app.route('/dashboard')
 def dashboard():
-    if 'user_id' not in session:
+    # Check whether the user is logged in
+    user_id = session.get('user_id')
+
+    if not user_id:
         return redirect(url_for('login'))
-    
-    user = User.query.get(session['user_id'])
-    
-    # Ensure all game progress entries exist for this user
+
+    # Find the user in the database
+    user = db.session.get(User, user_id)
+
+    # Handle missing users or expired sessions
+    if user is None:
+        session.clear()
+        return redirect(url_for('login'))
+
+    # Ensure progress entries exist for every game
     all_games = ['pong', 'snake', 'states']
-    existing_progress = GameProgress.query.filter_by(user_id=user.id).all()
+
+    existing_progress = GameProgress.query.filter_by(
+        user_id=user.id
+    ).all()
+
     existing_games = {p.game_name for p in existing_progress}
-    
-    # Create missing game progress entries
+
     for game in all_games:
         if game not in existing_games:
-            new_progress = GameProgress(user_id=user.id, game_name=game)
+            new_progress = GameProgress(
+                user_id=user.id,
+                game_name=game
+            )
             db.session.add(new_progress)
+
     db.session.commit()
-    
-    # Reload progress after ensuring all entries exist
-    progress = GameProgress.query.filter_by(user_id=user.id).all()
-    
+
+    # Load the latest progress records
+    progress = GameProgress.query.filter_by(
+        user_id=user.id
+    ).all()
+
+    # Prepare statistics for the dashboard
     game_stats = {}
+
     for p in progress:
         game_stats[p.game_name] = {
             'high_score': p.high_score,
@@ -124,8 +144,12 @@ def dashboard():
             'total_wins': p.total_wins,
             'last_played': p.last_played
         }
-    
-    return render_template('dashboard.html', username=user.username, stats=game_stats)
+
+    return render_template(
+        'dashboard.html',
+        username=user.username,
+        stats=game_stats
+    )
 
 @app.route('/play/<game_name>')
 def play_game(game_name):
