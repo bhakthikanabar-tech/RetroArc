@@ -1,344 +1,238 @@
-```css
-/* =========================================
-   RETROARC - CLASSIC ARCADE THEME
-   Paste at the END of style.css
-========================================= */
+/* ==========================================
+   RETROARC HOMEPAGE - RETRO ARCADE THEME
+========================================== */
 
 :root {
-    --arcade-bg: #090b16;
-    --arcade-panel: #141827;
-    --arcade-panel-hover: #1c2235;
-    --arcade-pink: #ff70c5;
-    --arcade-cyan: #35f2e4;
-    --arcade-yellow: #ffd166;
-    --arcade-white: #f5f5ff;
-    --arcade-muted: #b8bfd6;
+    --retro-bg: #090b16;
+    --retro-panel: #141827;
+    --retro-pink: #ff70c5;
+    --retro-cyan: #35f2e4;
+    --retro-yellow: #ffd166;
+    --retro-text: #f5f5ff;
+    --retro-muted: #b8bfd6;
 }
 
-/* Main page */
-html {
+/* Page background */
+html,
+body {
+    margin: 0;
     min-height: 100%;
-    background: var(--arcade-bg);
+    background-color: var(--retro-bg);
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-        radial-gradient(
-            ellipse at 50% 15%,
-            rgba(53, 242, 228, 0.09),
-            transparent 42%
-        ),
-        radial-gradient(
-            ellipse at 15% 75%,
-            rgba(255, 112, 197, 0.08),
-            transparent 35%
-        ),
-        var(--arcade-bg) !important;
-
-    color: var(--arcade-white) !important;
+    color: var(--retro-text);
     font-family: Arial, sans-serif;
 }
 
-/* Retro headings */
-h1,
-h2,
-h3,
-.logo,
-.game-card h3 {
-    font-family: "Courier New", monospace;
-}
-
-h1,
-h2,
-h3,
-p,
-label {
-    color: var(--arcade-white);
-}
-
-/* Navigation bar */
+/* Navigation */
 .navbar {
     background: #0d1020 !important;
-    border-bottom: 2px solid var(--arcade-pink);
-    box-shadow: 0 4px 22px rgba(255, 112, 197, 0.12);
+    border-bottom: 2px solid var(--retro-pink);
+    box-shadow: 0 4px 20px rgba(255, 112, 197, 0.12);
 }
 
 .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
     min-height: 76px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 .logo {
-    color: var(--arcade-cyan) !important;
+    color: var(--retro-cyan) !important;
+    font-family: "Courier New", monospace;
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 2px 2px 0 var(--arcade-pink);
+    text-shadow: 2px 2px var(--retro-pink);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 26px;
 }
 
 .nav-links a {
-    color: var(--arcade-white) !important;
-    text-decoration: none;
+    color: var(--retro-text) !important;
     font-weight: bold;
+    text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: var(--arcade-pink) !important;
+    color: var(--retro-pink) !important;
 }
 
-/* Main content */
-.container {
-    color: var(--arcade-white);
-}
-
+/* Homepage background */
 .welcome-section {
-    padding: 75px 20px 45px;
+    min-height: calc(100vh - 80px);
+    padding: 65px 24px 55px;
+    box-sizing: border-box;
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(53, 242, 228, 0.09),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 10% 65%,
+            rgba(255, 112, 197, 0.06),
+            transparent 35%
+        ),
+        var(--retro-bg);
 }
 
+/* Main heading */
 .welcome-section h1 {
     max-width: 1000px;
-    margin: 0 auto 24px;
-    color: var(--arcade-white);
-    font-size: clamp(34px, 5vw, 66px);
+    margin: 0 auto 20px;
+    color: var(--retro-text);
+    font-family: "Courier New", monospace;
+    font-size: clamp(36px, 5vw, 64px);
     line-height: 1.2;
-    overflow-wrap: anywhere;
-    text-shadow: 4px 4px 0 rgba(255, 112, 197, 0.75);
+    overflow-wrap: break-word;
+
+    text-shadow:
+        3px 3px 0 var(--retro-pink),
+        0 0 22px rgba(255, 112, 197, 0.12);
 }
 
-.welcome-section p {
-    color: var(--arcade-muted);
-    font-size: 18px;
-    line-height: 1.7;
+/* Subtitle */
+.welcome-section .subtitle {
+    margin: 20px 0 48px;
+    color: var(--retro-muted);
+    font-size: 19px;
+    line-height: 1.6;
 }
 
-/* Games section */
-.games-preview {
-    padding: 35px 20px 70px;
-}
-
-.games-preview h2 {
-    margin-bottom: 35px;
-    color: var(--arcade-cyan);
-    text-align: center;
-    font-size: clamp(25px, 3vw, 36px);
-}
-
-/* Game cards */
-.games-grid,
-.games-preview .games-grid {
+/* Game cards layout */
+.welcome-section .games-preview {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, 250px), 1fr)
-    );
-    gap: 26px;
-    max-width: 1100px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto 38px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
-.game-card {
-    position: relative;
-    padding: 30px 24px;
-    overflow: hidden;
-    text-align: center;
+/* Individual cards */
+.welcome-section .game-card {
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 30px 20px;
 
-    background: var(--arcade-panel) !important;
+    background: var(--retro-panel) !important;
     border: 1px solid rgba(53, 242, 228, 0.35);
     border-radius: 12px;
 
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
-.game-card:hover {
-    transform: translateY(-7px);
-    background: var(--arcade-panel-hover) !important;
-    border-color: var(--arcade-pink);
+.welcome-section .game-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--retro-pink);
+
     box-shadow:
-        0 0 12px rgba(255, 112, 197, 0.15),
-        0 12px 30px rgba(0, 0, 0, 0.35);
-}
-
-.game-card h3 {
-    margin: 18px 0 12px;
-    color: var(--arcade-pink) !important;
-    font-size: 23px;
-}
-
-.game-card p {
-    color: var(--arcade-muted) !important;
-    line-height: 1.7;
+        0 0 18px rgba(255, 112, 197, 0.12),
+        0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Game icons */
-.game-icon {
-    display: block;
-    margin: 0 auto 16px;
-    font-size: 55px;
+.welcome-section .game-icon {
+    margin-bottom: 18px;
+    font-size: 52px;
     line-height: 1.3;
 }
 
-/* Buttons */
-.btn,
-button,
-input[type="submit"] {
-    font-family: inherit;
+/* Card titles */
+.welcome-section .game-card h3 {
+    margin: 12px 0;
+    color: var(--retro-pink) !important;
+    font-family: "Courier New", monospace;
+    font-size: 23px;
 }
 
-.btn {
+/* Card descriptions */
+.welcome-section .game-card p {
+    margin: 0;
+    color: var(--retro-muted) !important;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Create Account and Login buttons */
+.welcome-section .cta-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.welcome-section .cta-buttons .btn {
     display: inline-block;
-    padding: 12px 22px;
-    border: 2px solid var(--arcade-cyan);
+    min-width: 140px;
+    padding: 13px 22px;
+    box-sizing: border-box;
+
+    border: 2px solid var(--retro-cyan);
     border-radius: 6px;
 
-    background: var(--arcade-cyan);
-    color: #080b15 !important;
+    background: var(--retro-cyan);
+    color: #090b16 !important;
 
+    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
-    cursor: pointer;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
-    background: var(--arcade-pink);
-    border-color: var(--arcade-pink);
-    box-shadow: 0 0 16px rgba(255, 112, 197, 0.25);
+.welcome-section .cta-buttons .btn:hover {
+    transform: translateY(-3px);
+    background: var(--retro-pink);
+    border-color: var(--retro-pink);
 }
 
-/* Forms and inputs */
-input,
-textarea,
-select {
-    max-width: 100%;
-    box-sizing: border-box;
-    background: #0d1120 !important;
-    color: var(--arcade-white) !important;
-    border: 1px solid #555e7b !important;
-    border-radius: 6px;
-}
-
-input::placeholder,
-textarea::placeholder {
-    color: #a8b0c8 !important;
-    opacity: 1;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: var(--arcade-cyan) !important;
-    box-shadow: 0 0 0 3px rgba(53, 242, 228, 0.12);
-}
-
-/* Authentication cards */
-.auth-box {
-    background: var(--arcade-panel) !important;
-    color: var(--arcade-white) !important;
-    border: 1px solid rgba(255, 112, 197, 0.45);
-    border-radius: 12px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-}
-
-.auth-box h2 {
-    color: var(--arcade-pink);
-}
-
-.auth-box a {
-    color: var(--arcade-cyan);
-}
-
-/* Dashboard and game panels */
-.dashboard,
-.game-container,
-.game-info,
-.game-controls {
-    color: var(--arcade-white);
-}
-
-.dashboard,
-.game-info,
-.game-controls {
-    background: var(--arcade-panel);
-    border: 1px solid rgba(53, 242, 228, 0.2);
-    border-radius: 10px;
-}
-
-.game-container {
+/* Secondary button */
+.welcome-section .cta-buttons .btn-secondary {
     background: transparent;
+    color: var(--retro-cyan) !important;
 }
 
-/* Game canvas */
-#gameCanvas {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 20px auto;
-
-    background: #05070b;
-    border: 2px solid var(--arcade-cyan);
-    border-radius: 5px;
-    box-shadow: 0 0 22px rgba(53, 242, 228, 0.12);
+.welcome-section .cta-buttons .btn-secondary:hover {
+    background: var(--retro-pink);
+    color: #090b16 !important;
 }
 
-/* Score and status */
-#score,
-#highScore,
-#timer {
-    color: var(--arcade-yellow);
-    font-weight: bold;
-}
-
-#statusMessage {
-    color: var(--arcade-cyan);
-}
-
-/* Footer */
-footer {
-    padding: 24px 16px;
-    background: #0d1020 !important;
-    color: var(--arcade-muted) !important;
-    border-top: 1px solid rgba(53, 242, 228, 0.2);
-    text-align: center;
-}
-
-footer p {
-    color: var(--arcade-muted) !important;
-}
-
-/* Make links readable */
-a {
-    color: var(--arcade-cyan);
-}
-
-a:hover {
-    color: var(--arcade-pink);
-}
-
-/* Mobile layout */
+/* Mobile and tablet layout */
 @media (max-width: 768px) {
     .nav-container {
         flex-wrap: wrap;
         gap: 14px;
-        padding: 14px 18px;
+        padding: 16px 18px;
     }
 
     .logo {
@@ -346,24 +240,34 @@ a:hover {
     }
 
     .nav-links {
-        flex-wrap: wrap;
-        gap: 14px;
+        gap: 16px;
     }
 
     .welcome-section {
-        padding: 48px 18px 30px;
+        padding: 45px 18px;
     }
 
     .welcome-section h1 {
-        font-size: clamp(32px, 8vw, 48px);
+        font-size: clamp(32px, 7vw, 46px);
     }
 
-    .games-preview {
-        padding: 25px 16px 45px;
+    .welcome-section .subtitle {
+        margin-bottom: 32px;
     }
 
-    .game-card {
-        padding: 24px 18px;
+    .welcome-section .games-preview {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        gap: 18px;
+    }
+
+    .welcome-section .game-card {
+        padding: 25px 18px;
     }
 }
-```
+
+@media (min-width: 500px) and (max-width: 768px) {
+    .welcome-section .games-preview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
